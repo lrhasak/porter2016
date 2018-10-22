@@ -1,0 +1,204 @@
+---
+title: 'Replication of Inferring Identity From Language: Linguistic Intergroup Bias
+  Informs Social Categorization by Shanette C. Porter, Michelle Rheinschmidt-Same,
+  and Jennifer A. Richeson (2016, Psychological Science)'
+author: "Lindsey Hasak (lrhasak@stanford.edu)"
+date: "October 21, 2018"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+---
+[Github Repository](https://github.com/lrhasak/porter2016)
+
+##Introduction
+ 
+  Porter, Rheinschmidt-Same, and Richeson (2016) aimed to test how linguistic intergroup bias (LIB) affects individuals' inferences about communicator's social identities. In Study 1a, participants were asked about a communicator's political preference in favorable and unfavorable LIB conditions. Study 1b examined the generalizability of the effect found in 1a by asking participants about the communicator's religion. In Study 2, Porter et al. tested LIB more subtly by asking participants to discern the communicator's preferences about social policies Finally, in Study 3, Porter et al. investigated other possible influences for the results of the study by controlling for between-conditions differences and group membership of the target. 
+  I aim to replicate the results of Study 2 by posing the same questions about social-policy preferences to participants through Amazon Mechanical turk. If replicated, I expect the data to show that participants in the favorable-LIB condition believed that the communicator supported typically Democratic social policies and was a Democrat, as compared the participants in the unfavorable-LIB condition. Additionally, these results should not be modulated by the participants' self-reported political party and ideology.
+
+
+##Methods
+
+###Power Analysis
+
+Porter et al. estimated that 120 participants would be sufficient for Study 2, given the effect sizes of *d* = 0.53, *d* = 0.80,and *d* = 0.62 in Study 1a. They ultimately collected data from 118 participants. The original effect size for Study 2 was *d* = 0.60 with 118 participants. A power analysis reveals that I would need 45 participants in each condition for 80% power, 60 participants in each condition for 90% power, and 74 participants in each group for 95% power. Given that this is a replication, the goal will be to have 60 participants in each of the favorable and unfavorable LIB conditions.
+
+```{r}
+pwr.t.test(n  = NULL, d = .60, sig.level = .05, power = .80, type = c("two.sample"))
+```
+```{r}
+pwr.t.test(n  = NULL, d = .60, sig.level = .05, power = .90, type = c("two.sample"))
+```
+```{r}
+pwr.t.test(n  = NULL, d = .60, sig.level = .05, power = .95, type = c("two.sample"))
+```
+
+
+###Planned Sample
+
+The planned sample size is 120 participants, after which data collection will end. While the aim is to have self-reported political party affiliations reflect the original study (30.5% Democrat, 31.4% Republican, 33.1% Independent, 2.5% "other", and 2.5% not reported), participants will not be screened for party affiliation before being allowed to participate.
+
+###Materials
+
+Communicator Statement - Favorable LIB Condition (followed precisely from Porter et al., 2016)
+"The communicator states the following about Peter: Peter has helped many people, even when it did not benefit him. IN my view, he is someone who stands up for the interests of others. I think he is socially very responsible. On the other hand, Peter said something rude to another person recently. In my opinion, he acted cold and did something unfriendly."
+
+Communicator Statement - Unfavorable LIB Condition (followed precisely from Porter et al., 2016)
+"The communicator states the following about Peter: Peter helped another person, even when it did not benefit him. In my view, he is someone who acted in the interests of that person, as well as stood up for the interests of that person. On the other hand, Peter is rude to many people. In my opinion, he is cold and unfriendly."
+
+Explicit Social Categorization of the Communicator (followed precisely from Porter et al., 2016)
+
+"How do you think the COMMUNICATOR would feel about eliminating race-based Affirmative Action?"
+
+"How do you think the COMMUNICATOR would feel about increasing the level of legal immigration?"
+
+"How do you think the COMMUNICATOR would feel about increasing taxes on the wealthy?"
+
+Scale for Answering questions about communicator statements (followed precisely from Porter et al., 2016)
+"1 = Strongly opposed
+2 = Moderately opposed
+3 = Slightly opposed
+4 = Neutral
+5 = Slightly in favor
+6 = Moderately in favor
+7 = Strongly in favor"
+
+Demographic Questions and Potential Answers (followed precisely from Porter et al., 2016)
+
+"What is your marital status?
+Answer choices: Single, married
+
+What is your gender?
+Answer choices: male, female
+
+Are you a US citizen?
+Answer choices: yes, no
+
+How many children live in your household?
+Answer choices: 0-10
+
+Approx. how may surveys have you completed in the last 30 days?
+Answer choices: 0-1000
+
+How warmly do you feel toward Democrats, in general?
+Answer choices: 0-100
+
+What is your race/ethnicity?
+Asnwer choices: White, Black, Asian, Latino, Native American, Other
+
+What is your age?
+Asnwer choices: 0-100
+I endorse many aspects of conservative political ideology
+Answer choices:
+1 - Strongly disagree
+2 - Disagree
+3 - Somewhat disagree
+4 - Neither agree nor disagree
+5 - Somewhat agree
+6 - Agree
+7 - Strongly agree
+
+I endorse many aspects of liberal political ideology
+Answer choices:
+1 - Strongly disagree
+2 - Disagree
+3 - Somewhat disagree
+4 - Neither agree nor disagree
+5 - Somewhat agree
+6 - Agree
+7 - Strongly agree
+
+In general, how would you describe your political views on social issues?
+Asnwer choices:
+1 - Very liberal
+2 - Somewhat liberal
+3 - Middle of the road
+4 - Somewhat conservative
+5 - Very conservative
+
+Generally speaking, do you usually consider yourself a Democrat, a Republican, an Independent, or affliliated with another political party?
+Answer choices:
+1 - Democrat
+2 - Republican
+3 - Independent
+4 - Other Political Party
+If other: Text Response
+
+Note if you have completed a survey like this before and if anything seemed strange
+Answer: Text Response"
+
+###Procedure	
+
+Followed precisely from Study 2 of Porter et al. (2016): 
+"Participants read one of the short passages from Study 1a and then responded to a series of questions measuring their beliefs about the communicator's attitudes regarding social-policy issues in the United States for which the political parties have well-known stances. The specific issues were (a) increasing legal immigration to the United States, (b) increasing taxes on the wealthy, and (c) legalizing same-sex marriage." Participants responded on 7-point scales, ranging from 1, ***strongly opposed*** to 7, ***strongly in favor***. Participants then completed the explicit social categorization of the communicator, as described in Study 1a, and the same demographic questionnaire used in Study 1a."
+
+###Analysis Plan
+
+Can also quote directly, though it is less often spelled out effectively for an analysis strategy section.  The key is to report an analysis strategy that is as close to the original - data cleaning rules, data exclusion rules, covariates, etc. - as possible.  
+
+
+compare mean ratings for composite for participants in favorable and unfavorable LIB condition through 2 sample t-test 
+
+For study 2, Porter et al. reported that "The ratings for the social-policy issues were averaged to form a composite (alpha = .63)^1" This replication will also form a composite score for social-policy issues. The notation about the composite explains that "in a factor analysis, a fourth policy, eliminating affirmative action, did not load with the other items, but revealed the same pattern: Participants in the favorable-LIB condition believed that the communicator was less likely to support the policy (*M* = 3.83, *SD*  = 1.44) than did participants in the unfavorable-LIB condition (*M* = 4.45, *SD* = 1.13), *t*(116) = 2.61, *p* = .01." To keep the analysis strategy as close to the original as possible, I will also eliminate the affirmative action data from the composite, but report if it followed the trend on its own. 
+I will then conduct an independent-samples t-test to see if my data replicates the finding that "participants in the favorable-LIB condition believed that the communicator was more likely to support these Democratic-leaning social policies (*M* = 4.90, *SD* = 0.99), compared with participants in the unfavorable-LIB condition (*M* = 4.33, *SD* = 0.90), *t*(116) = 3.25, *p* = .002, *d* = 0.60. I will also conduct t-tests on self-reported ideology and political-party affiliation to determine if those influences affect results (this test did not reach significance in the original study, *ps* > 0.39).
+
+I will also conduct an independent-samples t-test to replicate the social category inference aspect of Study 2, which found that "participants in the favorable-LIB condition were significantly more likely to indicate that the communicator was a Democrat (*M* = 4.34, *SD* = 1.29) than were participants in the unfavorable-LIB condition (*M* = 3.28, *SD* = 1.64, *t*(113) = 3.90, *p* < .001, *d* = 0.62." Additionally, as part of the replication process I will run another t-test to determine if self-reported political-party affiliation or political ideology moderate the results. 
+###Differences from Original Study
+
+Both the original sample and the replication will be conducted through MTurk. The original study had 63 participants in the unfavorable LIB condition, and 55 in the favorable LIB condition; this replication will try to have an equal amount of participants in both conditions. The authors did not report which test they used to determine if "self-reported political-party affiliation [or] their political-ideology endorsements moderated this result," so I am assuming that they conducted further independent-samples t-tests by party affiliation. Additionally, Porter et al. excluded 2 participants from their sample who "did not complete the dependent measures"; unless a similar occurrence happens, I will include all participant data in my analyses, which I do not anticipate making a difference in the results.
+
+
+### Methods Addendum (Post Data Collection)
+
+You can comment this section out prior to final report with data collection.
+
+#### Actual Sample
+  Sample size, demographics, data exclusions based on rules spelled out in analysis plan
+
+#### Differences from pre-data collection methods plan
+  Any differences from what was described as the original plan, or “none”.
+
+
+##Results
+
+
+### Data preparation
+
+Data preparation following the analysis plan.
+	
+```{r include=F}
+###Data Preparation
+
+####Load Relevant Libraries and Functions
+
+####Import data
+
+#### Data exclusion / filtering
+
+#### Prepare data for analysis - create columns etc.
+```
+
+### Confirmatory analysis
+
+The analyses as specified in the analysis plan.  
+
+*Side-by-side graph with original graph is ideal here*
+
+###Exploratory analyses
+
+Any follow-up analyses desired (not required).  
+
+## Discussion
+
+### Summary of Replication Attempt
+
+Open the discussion section with a paragraph summarizing the primary result from the confirmatory analysis and the assessment of whether it replicated, partially replicated, or failed to replicate the original result.  
+
+### Commentary
+
+Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long.
